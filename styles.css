@@ -49,16 +49,23 @@ img {
 }
 
 .navbar {
-  min-height: 78px;
+  min-height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .brand img {
-  width: 270px;
   display: block;
+  width: 205px;
+  height: auto;
 }
 
 .nav-links {
@@ -346,7 +353,7 @@ img {
   }
 
   .brand img {
-    width: 210px;
+    width: 175px;
   }
 
   .hero-grid,
