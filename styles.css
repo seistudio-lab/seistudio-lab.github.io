@@ -49,7 +49,7 @@ img {
 }
 
 .navbar {
-  min-height: 72px;
+  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,7 +64,7 @@ img {
 
 .brand img {
   display: block;
-  width: 205px;
+  width: 165px;
   height: auto;
 }
 
@@ -353,7 +353,7 @@ img {
   }
 
   .brand img {
-    width: 175px;
+    width: 145px;
   }
 
   .hero-grid,
