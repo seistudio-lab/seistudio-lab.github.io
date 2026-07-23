@@ -1,0 +1,250 @@
+/* SeiStudio Gallery */
+.gallery-section {
+  padding-top: 76px;
+}
+
+.gallery-event + .gallery-event {
+  margin-top: 96px;
+  padding-top: 90px;
+  border-top: 1px solid var(--line);
+}
+
+.gallery-event-header {
+  display: grid;
+  grid-template-columns: 126px minmax(0, 1fr);
+  gap: 34px;
+  align-items: start;
+  max-width: 980px;
+  margin-bottom: 34px;
+}
+
+.gallery-event-header h2 {
+  margin: 2px 0 12px;
+  color: var(--text);
+  font-size: clamp(29px, 3.2vw, 42px);
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+.gallery-event-header p:not(.section-kicker) {
+  max-width: 800px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.gallery-date {
+  display: flex;
+  min-height: 126px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 10px;
+  border: 1px solid #cad4eb;
+  border-radius: 15px;
+  background: #eef2ff;
+  color: var(--blue);
+  text-align: center;
+}
+
+.gallery-date span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.gallery-date strong {
+  margin: 2px 0;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.gallery-item {
+  position: relative;
+  flex: 0 1 calc((100% - 32px) / 3);
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--light);
+  box-shadow: 0 8px 24px rgba(21, 42, 90, 0.05);
+  cursor: zoom-in;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.28s ease, filter 0.28s ease;
+}
+
+.gallery-view {
+  position: absolute;
+  right: 14px;
+  bottom: 13px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 11px;
+  border: 1px solid rgba(255,255,255,0.55);
+  border-radius: 999px;
+  background: rgba(7, 26, 61, 0.72);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  backdrop-filter: blur(6px);
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  transform: scale(1.035);
+  filter: brightness(0.88);
+}
+
+.gallery-item:hover .gallery-view,
+.gallery-item:focus-visible .gallery-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-item:focus-visible {
+  outline: 3px solid rgba(0, 37, 150, 0.25);
+  outline-offset: 3px;
+}
+
+.gallery-lightbox {
+  width: min(1120px, calc(100% - 36px));
+  max-height: calc(100vh - 36px);
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+}
+
+.gallery-lightbox::backdrop {
+  background: rgba(4, 12, 30, 0.88);
+  backdrop-filter: blur(5px);
+}
+
+.gallery-lightbox-content {
+  overflow: hidden;
+  border-radius: 16px;
+  background: #071225;
+  box-shadow: 0 26px 80px rgba(0,0,0,0.42);
+}
+
+.gallery-lightbox-content img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 115px);
+  object-fit: contain;
+  background: #050b16;
+}
+
+.gallery-lightbox-content p {
+  margin: 0;
+  padding: 13px 18px 15px;
+  color: #dfe6f5;
+  font-size: 13px;
+  text-align: center;
+}
+
+.gallery-lightbox-close {
+  position: absolute;
+  z-index: 2;
+  top: -15px;
+  right: -15px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--navy);
+  font: inherit;
+  font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+@media (max-width: 900px) {
+  .gallery-event-header {
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 25px;
+  }
+
+  .gallery-date {
+    min-height: 110px;
+  }
+
+  .gallery-item {
+    flex-basis: calc((100% - 16px) / 2);
+  }
+}
+
+@media (max-width: 620px) {
+  .gallery-section {
+    padding-top: 58px;
+  }
+
+  .gallery-event + .gallery-event {
+    margin-top: 72px;
+    padding-top: 68px;
+  }
+
+  .gallery-event-header {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .gallery-date {
+    width: 104px;
+    min-height: 96px;
+  }
+
+  .gallery-date strong {
+    font-size: 21px;
+  }
+
+  .gallery-event-header h2 {
+    font-size: 29px;
+  }
+
+  .gallery-event-header p:not(.section-kicker) {
+    font-size: 15px;
+  }
+
+  .gallery-grid {
+    gap: 13px;
+  }
+
+  .gallery-item {
+    flex-basis: 100%;
+  }
+
+  .gallery-view {
+    opacity: 1;
+    transform: none;
+  }
+
+  .gallery-lightbox-close {
+    top: 8px;
+    right: 8px;
+  }
+}
