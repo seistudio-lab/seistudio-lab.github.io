@@ -233,6 +233,9 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+.postdoc-grid {
+  grid-template-columns: minmax(0, 580px) !important;
+}
 
 .project-section {
   margin-bottom: 72px;
