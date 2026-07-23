@@ -3,85 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SeiStudio</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f7f9fb;
-      color: #172033;
-    }
-
-    main {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .container {
-      max-width: 900px;
-    }
-
-    h1 {
-      margin-bottom: 12px;
-      font-size: 64px;
-      letter-spacing: -2px;
-    }
-
-    h2 {
-      margin-bottom: 28px;
-      font-size: 25px;
-      font-weight: 400;
-      color: #3d5a73;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #586579;
-    }
-
-    .university {
-      margin-top: 36px;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: #214f70;
-    }
-    
-    .lab-logo {
-      display: block;
-      width: min(760px, 94vw);
-      height: auto;
-      margin: 0 auto 32px;
-    }
-    
-  </style>
+  <meta name="description" content="SeiStudio, Seismic Processing and Imaging Lab at Kangwon National University">
+  <title>Home | SeiStudio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <main>
+
+<header class="site-header">
+  <div class="container navbar">
+    <a class="brand" href="index.html">
+      <img src="assets/Seistudio_logo_blue.png" alt="SeiStudio">
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html" class="active">Home</a>
+      <a href="research.html" class="">Research</a>
+      <a href="people.html" class="">People</a>
+      <a href="publications.html" class="">Publications</a>
+      <a href="news.html" class="">News</a>
+      <a href="contact.html" class="">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Kangwon National University</div>
+        <img class="hero-logo" src="assets/Seistudio_logo_white.png" alt="SeiStudio">
+        <p>
+          We develop seismic processing, imaging, sensing, and monitoring
+          technologies to understand complex subsurface systems from land to ocean.
+        </p>
+      </div>
+      <aside class="hero-card">
+        <h3>Research Focus</h3>
+        <ul>
+          <li>Seismic processing and imaging</li>
+          <li>Distributed acoustic sensing</li>
+          <li>Passive seismic and surface waves</li>
+          <li>Survey design and optimization</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
-      <img
-        class="lab-logo"
-        src="Seistudio_logo_blue.png"
-        alt="Seistudio — Seismic Processing and Imaging Lab"
-      >
-
-      
-      <p>
-        We develop advanced seismic processing, imaging, and sensing, and
-        monitoring technologies to understand complex subsurface systems
-        from land to ocean.
-      </p>
-
-      <div class="university">
-        KANGWON NATIONAL UNIVERSITY
+      <div class="section-heading">
+        <h2>Research Areas</h2>
+        <p>
+          SeiStudio develops computational and observational methods for
+          imaging, monitoring, and understanding the subsurface.
+        </p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-number">01</div>
+          <h3>Seismic Processing &amp; Imaging</h3>
+          <p>Denoising, reconstruction, deblending, full-waveform inversion, and reverse-time migration.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">02</div>
+          <h3>Distributed Acoustic Sensing</h3>
+          <p>Fiber-optic sensing for submarine cables, coastal monitoring, and seismic applications.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">03</div>
+          <h3>Passive Seismic</h3>
+          <p>Interferometry, surface-wave analysis, and subsurface characterization using ambient noise.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">04</div>
+          <h3>Survey Optimization</h3>
+          <p>Data-driven and AI-assisted acquisition design for efficient geophysical exploration.</p>
+        </article>
       </div>
     </div>
-  </main>
+  </section>
+
+  <section class="section light">
+    <div class="container split">
+      <div>
+        <div class="section-heading">
+          <h2>Current Highlights</h2>
+          <p>Representative themes currently under development in the laboratory.</p>
+        </div>
+        <ul class="list-clean">
+          <li>
+            <strong>Retired submarine-cable DAS</strong>
+            <span class="meta">Coastal waves and vessel-response monitoring offshore Geoje Island</span>
+          </li>
+          <li>
+            <strong>Fault-zone seismic imaging</strong>
+            <span class="meta">Reflection imaging and structural interpretation of Korean fault systems</span>
+          </li>
+          <li>
+            <strong>Passive seismic monitoring</strong>
+            <span class="meta">Ambient-noise interferometry and deep surface-wave investigation</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="section-heading">
+          <h2>Latest News</h2>
+          <p>Replace the examples below with recent laboratory updates.</p>
+        </div>
+        <ul class="list-clean">
+          <li>
+            <strong>Laboratory website launched</strong>
+            <span class="meta">July 2026</span>
+          </li>
+          <li>
+            <strong>New field experiment</strong>
+            <span class="meta">Add title and date here</span>
+          </li>
+          <li>
+            <strong>New publication</strong>
+            <span class="meta">Add journal and publication date here</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <img src="assets/Seistudio_logo_white.png" alt="SeiStudio">
+    <div>
+      <div>Seismic Processing &amp; Imaging Lab.</div>
+      <div class="small">Department of Geophysics, Kangwon National University</div>
+      <div class="small">&copy; 2026 SeiStudio. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
