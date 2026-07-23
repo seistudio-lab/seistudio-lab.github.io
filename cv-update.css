@@ -686,3 +686,99 @@
     width: min(300px, 100%);
   }
 }
+
+/* Compact graduate-student cards */
+.student-card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 22px !important;
+}
+
+.student-profile-card {
+  display: grid !important;
+  grid-template-columns: 128px minmax(0, 1fr) !important;
+  min-height: 190px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 16px !important;
+  background: var(--white) !important;
+}
+
+.student-photo {
+  width: 128px !important;
+  height: 100% !important;
+  min-height: 190px !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+  background: linear-gradient(145deg, #edf1ff, #f7f9fc) !important;
+}
+
+.student-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 190px !important;
+  object-fit: cover !important;
+  object-position: center 24% !important;
+}
+
+.student-initials {
+  font-size: 34px !important;
+}
+
+.student-card-body {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding: 22px 24px !important;
+}
+
+.student-status {
+  margin-bottom: 7px !important;
+}
+
+.student-card-body h3 {
+  font-size: 21px !important;
+}
+
+.student-name-ko {
+  margin-bottom: 13px !important;
+}
+
+.student-topic {
+  font-size: 14px !important;
+  line-height: 1.52 !important;
+}
+
+@media (max-width: 900px) {
+  .student-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .student-profile-card {
+    grid-template-columns: 96px minmax(0, 1fr) !important;
+    min-height: 165px !important;
+  }
+
+  .student-photo {
+    width: 96px !important;
+    min-height: 165px !important;
+  }
+
+  .student-photo img {
+    min-height: 165px !important;
+  }
+
+  .student-card-body {
+    padding: 18px !important;
+  }
+
+  .student-card-body h3 {
+    font-size: 19px !important;
+  }
+
+  .student-topic {
+    font-size: 13px !important;
+  }
+}
