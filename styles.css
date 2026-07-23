@@ -281,7 +281,29 @@ img {
   padding: 20px;
   color: var(--muted);
 }
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
 
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.profile-link:hover {
+  background: var(--blue);
+  color: var(--white);
+}
 .pub-item {
   padding: 24px 0;
   border-bottom: 1px solid var(--line);
