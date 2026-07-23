@@ -410,25 +410,189 @@
   }
 }
 
-/* Professor profile photo */
-.profile-wide .profile-photo-tall {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  min-height: 0;
-  padding: 0;
-  overflow: hidden;
-  border: none;
-  border-radius: 14px;
-  background: transparent;
+/* Graduate students and alumni */
+.student-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
 }
 
-.profile-wide .profile-photo-tall img {
+.student-profile-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.student-profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(21, 42, 90, 0.10);
+}
+
+.student-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: linear-gradient(145deg, #edf1ff, #f7f9fc);
+}
+
+.student-photo img {
+  position: relative;
+  z-index: 2;
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 0;
   object-fit: cover;
-  object-position: center 30%;
-  border-radius: 14px;
+  object-position: center 25%;
+}
+
+.student-initials {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  color: #7080ad;
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.student-card-body {
+  padding: 22px 22px 25px;
+}
+
+.student-status {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.student-card-body h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.student-name-ko {
+  margin: 3px 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.student-topic {
+  margin: 0;
+  color: #465165;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.student-topic-muted {
+  color: #8a94a5;
+  font-style: italic;
+}
+
+.alumni-heading {
+  margin-top: 74px;
+}
+
+.alumni-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.alumni-card {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 22px;
+  padding: 27px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.alumni-year {
+  align-self: start;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #e9eeff;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.alumni-card h3 {
+  margin: 0 0 16px;
+  font-size: 21px;
+}
+
+.alumni-name-ko {
+  margin-left: 5px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.alumni-label {
+  margin: 0 0 4px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.alumni-thesis {
+  margin: 0;
+  color: #374256;
+  line-height: 1.55;
+}
+
+.alumni-thesis-ko {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.alumni-current {
+  margin: 17px 0 0;
+  padding-top: 15px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.alumni-affiliation-ko {
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .student-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .alumni-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .student-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alumni-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .alumni-year {
+    justify-self: start;
+  }
 }
