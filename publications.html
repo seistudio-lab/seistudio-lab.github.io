@@ -3,61 +3,866 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SeiStudio, Seismic Processing and Imaging Lab at Kangwon National University">
+  <meta name="description" content="Publications of SeiStudio, Seismic Processing and Imaging Lab at Kangwon National University">
   <title>Publications | SeiStudio</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .publication-toolbar {
+      margin: 38px 0 52px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--light);
+    }
+
+    .publication-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .publication-stat {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+    }
+
+    .publication-stat strong {
+      display: block;
+      color: var(--blue);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .publication-stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .publication-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .filter-button {
+      appearance: none;
+      border: 1px solid #b9c4d4;
+      border-radius: 999px;
+      padding: 9px 15px;
+      background: var(--white);
+      color: var(--text);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .publication-search {
+      flex: 1 1 250px;
+      min-width: 220px;
+      margin-left: auto;
+      border: 1px solid #b9c4d4;
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: var(--white);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+    }
+
+    .publication-search:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,37,150,0.10);
+    }
+
+    .scholar-link {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 22px;
+      padding: 10px 16px;
+      border: 1px solid var(--blue);
+      border-radius: 8px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .scholar-link:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .pub-year-group {
+      margin-bottom: 52px;
+    }
+
+    .pub-year {
+      position: sticky;
+      top: 72px;
+      z-index: 2;
+      margin: 0 0 14px;
+      padding: 8px 0;
+      background: rgba(255,255,255,0.94);
+      color: var(--blue);
+      font-size: 30px;
+      letter-spacing: -0.02em;
+      backdrop-filter: blur(8px);
+    }
+
+    .publication-card {
+      padding: 24px 0 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .publication-card h3 {
+      max-width: 980px;
+      margin: 8px 0 7px;
+      font-size: 19px;
+      line-height: 1.42;
+    }
+
+    .publication-card p {
+      margin: 4px 0;
+    }
+
+    .pub-authors {
+      color: #3e4859;
+      font-size: 15px;
+    }
+
+    .pub-venue {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .publication-topline {
+      display: flex;
+      align-items: center;
+    }
+
+    .pub-type {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .pub-type.journal {
+      background: #e9eeff;
+      color: var(--blue);
+    }
+
+    .pub-type.conference {
+      background: #edf4ef;
+      color: #27633c;
+    }
+
+    .pub-type.patent {
+      background: #fff1df;
+      color: #845112;
+    }
+
+    .publication-card[hidden],
+    .pub-year-group[hidden] {
+      display: none;
+    }
+
+    .no-results {
+      display: none;
+      padding: 40px 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    @media (max-width: 760px) {
+      .publication-summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .publication-search {
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .pub-year {
+        top: 108px;
+      }
+    }
+  </style>
 </head>
 <body>
-
 <header class="site-header">
   <div class="container navbar">
     <a class="brand" href="index.html">
       <img src="assets/Seistudio_header_blue.png" alt="SeiStudio">
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
-      <a href="index.html" class="">Home</a>
-      <a href="research.html" class="">Research</a>
-      <a href="people.html" class="">People</a>
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="people.html">People</a>
       <a href="publications.html" class="active">Publications</a>
-      <a href="news.html" class="">News</a>
-      <a href="contact.html" class="">Contact</a>
+      <a href="news.html">News</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </div>
 </header>
-
 
 <main>
   <section class="page-hero">
     <div class="container">
       <h1>Publications</h1>
-      <p>Selected journal articles, conference papers, and other research outputs.</p>
+      <p>Journal articles, conference papers, and patents from SeiStudio.</p>
+      <a class="scholar-link"
+         href="https://scholar.google.com/citations?user=vx_6t-YAAAAJ&hl=en"
+         target="_blank"
+         rel="noopener noreferrer">View Google Scholar ↗</a>
     </div>
   </section>
+
   <section class="section">
     <div class="container">
-      <div class="pub-item">
-        <h3>Add most recent paper title here</h3>
-        <p>Authors. Journal, volume, pages, year.</p>
-        <span class="tag">Journal Article</span>
+      <div class="publication-toolbar">
+        <div class="publication-summary">
+          <div class="publication-stat"><strong>57</strong><span>Total records</span></div>
+          <div class="publication-stat"><strong>20</strong><span>Journal articles</span></div>
+          <div class="publication-stat"><strong>30</strong><span>Conference papers</span></div>
+          <div class="publication-stat"><strong>7</strong><span>Patents</span></div>
+        </div>
+        <div class="publication-controls">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="journal">Journal Articles</button>
+          <button class="filter-button" type="button" data-filter="conference">Conference Papers</button>
+          <button class="filter-button" type="button" data-filter="patent">Patents</button>
+          <input class="publication-search" id="publication-search" type="search"
+                 placeholder="Search title, author, venue, or year"
+                 aria-label="Search publications">
+        </div>
       </div>
-      <div class="pub-item">
-        <h3>Geophysical Sensing With a Retired Submarine Telecommunication Cable</h3>
-        <p>Replace with final bibliographic information after publication.</p>
-        <span class="tag">Research Highlight</span>
+
+      <div id="publication-list">
+        <div class="pub-year-group" data-year-group="2026"><h2 class="pub-year">2026</h2>
+
+<article class="publication-card" data-category="journal" data-year="2026" data-search="joint receiver deghosting and streamer depth inversion without prior depth information jeong, woodon and hwang, jongha and kim, sookwan geophysical journal international   2026 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Joint receiver deghosting and streamer depth inversion without prior depth information</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Jongha Hwang, Sookwan Kim</p>
+  <p class="pub-venue"><em>Geophysical Journal International</em>, 244(1), ggaf398</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2025"><h2 class="pub-year">2025</h2>
+
+<article class="publication-card" data-category="journal" data-year="2025" data-search="attenuation of shear noise in seafloor vertical geophone data using hybrid radon transform lee, chanhee and jeong, woodon ieee geoscience and remote sensing letters   2025 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Attenuation of Shear Noise in Seafloor Vertical Geophone Data Using Hybrid Radon Transform</h3>
+  <p class="pub-authors">Chanhee Lee, <strong>Woodon Jeong</strong></p>
+  <p class="pub-venue"><em>IEEE Geoscience and Remote Sensing Letters</em>, 23, 1–5</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2025" data-search="compressive sensing principles applied in time and space for three-dimensional land seismic data acquisition and processing jeong, woodon and tsingas, constantinos and almubarak, mohammed s and ma, yue geophysical prospecting   2025 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Compressive sensing principles applied in time and space for three-dimensional land seismic data acquisition and processing</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Mohammed S Almubarak, Yue Ma</p>
+  <p class="pub-venue"><em>Geophysical Prospecting</em>, 73(1), 3–18</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2024"><h2 class="pub-year">2024</h2>
+
+<article class="publication-card" data-category="journal" data-year="2024" data-search="single-channel seismic data processing via singular spectrum analysis jeong, woodon and lee, chanhee and kang, seung-goo geophysics and geophysical exploration   2024 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Single-Channel Seismic Data Processing via Singular Spectrum Analysis</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Chanhee Lee, Seung-Goo Kang</p>
+  <p class="pub-venue"><em>Geophysics and Geophysical Exploration</em>, 27(2), 91–107</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2023"><h2 class="pub-year">2023</h2>
+
+<article class="publication-card" data-category="conference" data-year="2023" data-search="compressive sensing principles applied for seismic data acquisition and processing in time and space tsingas, c and jeong, w and almubarak, m and ma, y  84th eage annual conference &amp; exhibition  2023 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Compressive sensing principles applied for seismic data acquisition and processing in time and space</h3>
+  <p class="pub-authors">C Tsingas, <strong>W Jeong</strong>, M Almubarak, Y Ma</p>
+  <p class="pub-venue"><em>84th EAGE Annual Conference &amp; Exhibition</em>, 2023(1), 1–5</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2022"><h2 class="pub-year">2022</h2>
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="deblending of 3d land seismic dispersed source array data jeong, woodon and tsingas, constantinos and almubarak, mohammed s.  seg advances in land seismic data processing workshop  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Deblending of 3D land seismic dispersed source array data</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Mohammed S. Almubarak</p>
+  <p class="pub-venue"><em>SEG Advances in Land Seismic Data Processing Workshop</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="deblending of frequency overlapping multi-sweep 3d dispersed source array data tsingas, c and jeong, w and almubarak, m  83rd eage annual conference &amp; exhibition  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Deblending of Frequency Overlapping Multi-Sweep 3D Dispersed Source Array Data</h3>
+  <p class="pub-authors">C Tsingas, <strong>W Jeong</strong>, M Almubarak</p>
+  <p class="pub-venue"><em>83rd EAGE Annual Conference &amp; Exhibition</em>, 2022(1), 1–5</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="dispersed source arrays broadband &amp; blended seismic acquisition and processing almubarak, mohammed s. and jeong, woodon and tsingas, constantinos  seg advances in land seismic data processing workshop  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Dispersed Source Arrays Broadband &amp; Blended Seismic Acquisition and Processing</h3>
+  <p class="pub-authors">Mohammed S. Almubarak, <strong>Woodon Jeong</strong>, Constantinos Tsingas</p>
+  <p class="pub-venue"><em>SEG Advances in Land Seismic Data Processing Workshop</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="fast track imaging using beam tomography alali, abdulmohsen and tsingas, constantinos and jeong, woodon and tanushev, nick and popovici, alexander mihai  seg advances in land seismic data processing workshop  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Fast track imaging using beam tomography</h3>
+  <p class="pub-authors">Abdulmohsen Alali, Constantinos Tsingas, <strong>Woodon Jeong</strong>, Nick Tanushev, Alexander Mihai Popovici</p>
+  <p class="pub-venue"><em>SEG Advances in Land Seismic Data Processing Workshop</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="novel technologies to increase productivity in marine and land seismic data acquisition: lessons learned from wide-scale field trials shuhail, abdulrahman a. and tsingas, constantinos and jeong, woodon and almubarak, mohammed s.  seg land &amp; shallow water acquisition workshop  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Novel technologies to increase productivity in marine and land seismic data acquisition: lessons learned from wide-scale field trials</h3>
+  <p class="pub-authors">Abdulrahman A. Shuhail, Constantinos Tsingas, <strong>Woodon Jeong</strong>, Mohammed S. Almubarak</p>
+  <p class="pub-venue"><em>SEG Land &amp; Shallow Water Acquisition Workshop</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="processing of blended 3d dispersed source array (dsa) seismic data almubarak, mohammed s. and tsingas, constantinos and jeong, woodon  international petroleum technology conference 2022  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Processing of blended 3D dispersed source array (DSA) seismic data</h3>
+  <p class="pub-authors">Mohammed S. Almubarak, Constantinos Tsingas, <strong>Woodon Jeong</strong></p>
+  <p class="pub-venue"><em>International Petroleum Technology Conference 2022</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="quality control of ocean bottom seismic data via k-means clustering jeong, woodon and almubarak, mohammed and tsingas, constantinos  international petroleum technology conference 2022  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Quality control of ocean bottom seismic data via k-means clustering</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Mohammed Almubarak, Constantinos Tsingas</p>
+  <p class="pub-venue"><em>International Petroleum Technology Conference 2022</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2022" data-search="robust denoising applications of rank-reduced filtering during land seismic data processing jeong, woodon and tsingas, constantinos and almubarak, mohammed s.  seg advances in land seismic data processing workshop  2022 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Robust denoising applications of rank-reduced filtering during land seismic data processing</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Mohammed S. Almubarak</p>
+  <p class="pub-venue"><em>SEG Advances in Land Seismic Data Processing Workshop</em></p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2022" data-search="deblending and merging of 3d multi-sweep seismic blended data jeong, woodon and tsingas, constantinos and almubarak, mohammed s geophysical prospecting   2022 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Deblending and merging of 3D multi-sweep seismic blended data</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Mohammed S Almubarak</p>
+  <p class="pub-venue"><em>Geophysical Prospecting</em>, 70(2), 246–261</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2022" data-search="shear noise suppression for seafloor vertical geophone using robust reduced-rank filtering jeong, woodon and tsingas, constantinos and almubarak, mohammed s ieee geoscience and remote sensing letters   2022 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Shear noise suppression for seafloor vertical geophone using robust reduced-rank filtering</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Mohammed S Almubarak</p>
+  <p class="pub-venue"><em>IEEE Geoscience and Remote Sensing Letters</em>, 19, 1–5</p>
+</article>
+
+
+<article class="publication-card" data-category="patent" data-year="2022" data-search="identifying characteristics of a subterranean region using vector-based wavefield separation of seismic data from the subterranean region jeong, woodon and tsingas, constantinos and kim, young seo   us patent 11,500,116 2022 patent">
+  <div class="publication-topline">
+    <span class="pub-type patent">Patent</span>
+  </div>
+  <h3>Identifying characteristics of a subterranean region using vector-based wavefield separation of seismic data from the subterranean region</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Young Seo Kim</p>
+  <p class="pub-venue">US Patent 11,500,116</p>
+</article>
+
+
+<article class="publication-card" data-category="patent" data-year="2022" data-search="noise suppression of seafloor geophone seismic data jeong, woodon and tsingas, constantinos   us patent 11,249,214 2022 patent">
+  <div class="publication-topline">
+    <span class="pub-type patent">Patent</span>
+  </div>
+  <h3>Noise suppression of seafloor geophone seismic data</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas</p>
+  <p class="pub-venue">US Patent 11,249,214</p>
+</article>
+
+
+<article class="publication-card" data-category="patent" data-year="2022" data-search="post-stack time domain image with broadened spectrum sun, yimin and jeong, woodon and tsingas, constantinos   us patent 11,320,557 2022 patent">
+  <div class="publication-topline">
+    <span class="pub-type patent">Patent</span>
+  </div>
+  <h3>Post-stack time domain image with broadened spectrum</h3>
+  <p class="pub-authors">Yimin Sun, <strong>Woodon Jeong</strong>, Constantinos Tsingas</p>
+  <p class="pub-venue">US Patent 11,320,557</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2021"><h2 class="pub-year">2021</h2>
+
+<article class="publication-card" data-category="journal" data-year="2021" data-search="a review of obn processing: challenges and solutions zhang, d and tsingas, c and ghamdi, aa and huang, m and jeong, w and sliz, kk and aldeghaither, sm and zahrani, sa journal of geophysics and engineering   2021 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>A review of OBN processing: challenges and solutions</h3>
+  <p class="pub-authors">D Zhang, C Tsingas, AA Ghamdi, M Huang, <strong>W Jeong</strong>, KK Sliz, SM Aldeghaither, SA Zahrani</p>
+  <p class="pub-venue"><em>Journal of Geophysics and Engineering</em>, 18(4), 492–502</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2021" data-search="quality control for the geophone reorientation of ocean bottom seismic data using k-means clustering jeong, w and almubarak, ms and tsingas, c geophysical prospecting   2021 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Quality control for the geophone reorientation of ocean bottom seismic data using k-means clustering</h3>
+  <p class="pub-authors"><strong>W Jeong</strong>, MS Almubarak, C Tsingas</p>
+  <p class="pub-venue"><em>Geophysical Prospecting</em>, 69(7), 1487–1502</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2021" data-search="seismic erratic noise attenuation using unsupervised anomaly detection jeong, w and almubarak, ms and tsingas, c geophysical prospecting   2021 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Seismic erratic noise attenuation using unsupervised anomaly detection</h3>
+  <p class="pub-authors"><strong>W Jeong</strong>, MS Almubarak, C Tsingas</p>
+  <p class="pub-venue"><em>Geophysical Prospecting</em>, 69(7), 1473–1486</p>
+</article>
+
+
+<article class="publication-card" data-category="patent" data-year="2021" data-search="generating geophysical images using directional oriented wavefield imaging tsingas, constantinos and kim, young seo and jeong, woodon   us patent 10,935,680 2021 patent">
+  <div class="publication-topline">
+    <span class="pub-type patent">Patent</span>
+  </div>
+  <h3>Generating geophysical images using directional oriented wavefield imaging</h3>
+  <p class="pub-authors">Constantinos Tsingas, Young Seo Kim, <strong>Woodon Jeong</strong></p>
+  <p class="pub-venue">US Patent 10,935,680</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2020"><h2 class="pub-year">2020</h2>
+
+<article class="publication-card" data-category="conference" data-year="2020" data-search="a denoising workflow of seafloor vertical geophone using 4-c data jeong, w and tsingas, c and mubarak, m  eage seabed seismic today: from acquisition to application  2020 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>A denoising workflow of seafloor vertical geophone using 4-C data</h3>
+  <p class="pub-authors"><strong>W Jeong</strong>, C Tsingas, M Mubarak</p>
+  <p class="pub-venue"><em>EAGE Seabed Seismic Today: from Acquisition to Application</em>, 2020(1), 1–5</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2020" data-search="an overview of obn processing challenges and technologies development zhang, d and tsingas, c and ghamdi, aa and huang, m and sliz, kk and jeong, w eage seabed seismic today: from acquisition to application   2020 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>An overview of OBN processing challenges and technologies development</h3>
+  <p class="pub-authors">D Zhang, C Tsingas, AA Ghamdi, M Huang, KK Sliz, <strong>W Jeong</strong></p>
+  <p class="pub-venue"><em>EAGE seabed seismic today: from acquisition to application</em>, 2020(1), 1–3</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2020" data-search="practical issues and solutions of obn processing zhang, dongliang and tsingas, constantinos and ghamdi, ahmed a and huang, mingzhong and jeong, woodon  seg international exposition and annual meeting  2020 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Practical issues and solutions of OBN processing</h3>
+  <p class="pub-authors">Dongliang Zhang, Constantinos Tsingas, Ahmed A Ghamdi, Mingzhong Huang, <strong>Woodon Jeong</strong></p>
+  <p class="pub-venue"><em>SEG International Exposition and Annual Meeting</em>, D041S112R005</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2020" data-search="3d distributed and dispersed source array acquisition and data processing tsingas, constantinos and almubarak, mohammed s and jeong, woodon and al shuhail, abdulrahman and trzesniowski, zygmunt the leading edge   2020 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>3D distributed and dispersed source array acquisition and data processing</h3>
+  <p class="pub-authors">Constantinos Tsingas, Mohammed S Almubarak, <strong>Woodon Jeong</strong>, Abdulrahman Al Shuhail, Zygmunt Trzesniowski</p>
+  <p class="pub-venue"><em>The leading edge</em>, 39(6), 392–400</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2020" data-search="a numerical study on deblending of land simultaneous shooting acquisition data via rank-reduction filtering and signal enhancement applications jeong, woodon and tsingas, constantinos and almubarak, mohammed s geophysical prospecting   2020 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>A numerical study on deblending of land simultaneous shooting acquisition data via rank-reduction filtering and signal enhancement applications</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Mohammed S Almubarak</p>
+  <p class="pub-venue"><em>Geophysical Prospecting</em>, 68(6), 1742–1757</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2020" data-search="local outlier factor as part of a workflow for detecting and attenuating blending noise in simultaneously acquired data jeong, woodon and tsingas, constantinos and almubarak, mohammed s geophysical prospecting   2020 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Local outlier factor as part of a workflow for detecting and attenuating blending noise in simultaneously acquired data</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Mohammed S Almubarak</p>
+  <p class="pub-venue"><em>Geophysical Prospecting</em>, 68(5), 1523–1539</p>
+</article>
+
+
+<article class="publication-card" data-category="patent" data-year="2020" data-search="generating a reflectivity model of subsurface structures kim, young seo and almomin, ali ameen and jeong, woodon and tsingas, constantinos   us patent 10,788,597 2020 patent">
+  <div class="publication-topline">
+    <span class="pub-type patent">Patent</span>
+  </div>
+  <h3>Generating a reflectivity model of subsurface structures</h3>
+  <p class="pub-authors">Young Seo Kim, Ali Ameen Almomin, <strong>Woodon Jeong</strong>, Constantinos Tsingas</p>
+  <p class="pub-venue">US Patent 10,788,597</p>
+</article>
+
+
+<article class="publication-card" data-category="patent" data-year="2020" data-search="generating a velocity model using subsurface azimuth and reflection angle dependent full waveform inversion tsingas, constantinos and jeong, wooden and kim, young seo   us patent 10,656,294 2020 patent">
+  <div class="publication-topline">
+    <span class="pub-type patent">Patent</span>
+  </div>
+  <h3>Generating a velocity model using subsurface azimuth and reflection angle dependent full waveform inversion</h3>
+  <p class="pub-authors">Constantinos Tsingas, <strong>Woodon Jeong</strong>, Young Seo Kim</p>
+  <p class="pub-venue">US Patent 10,656,294</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2019"><h2 class="pub-year">2019</h2>
+
+<article class="publication-card" data-category="conference" data-year="2019" data-search="a de-noising methodology for multi-component seafloor nodal geophones jeong, w and tsingas, c  81st eage conference and exhibition 2019  2019 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>A de-noising methodology for multi-component seafloor nodal geophones</h3>
+  <p class="pub-authors"><strong>W Jeong</strong>, C Tsingas</p>
+  <p class="pub-venue"><em>81st EAGE Conference and Exhibition 2019</em>, 2019(1), 1–5</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2019" data-search="rank revealing and vector optimization methods for adaptive robust denoising li, weichang and chen, ke and ahmed, ferhan and jeong, woodon  seg international exposition and annual meeting  2019 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Rank revealing and vector optimization methods for adaptive robust denoising</h3>
+  <p class="pub-authors">Weichang Li, Ke Chen, Ferhan Ahmed, <strong>Woodon Jeong</strong></p>
+  <p class="pub-venue"><em>SEG International Exposition and Annual Meeting</em>, D033S089R001</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2019" data-search="seismic interferometric redatuming of coarsely-spaced ocean bottom nodes from a complex bathymetry aldawood, a and jeong, w and tsingas, c  81st eage conference and exhibition 2019  2019 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Seismic Interferometric Redatuming of Coarsely-Spaced Ocean Bottom Nodes From a Complex Bathymetry</h3>
+  <p class="pub-authors">A Aldawood, <strong>W Jeong</strong>, C Tsingas</p>
+  <p class="pub-venue"><em>81st EAGE Conference and Exhibition 2019</em>, 2019(1), 1–5</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2019" data-search="enhanced elastic wavefield separation using local orthogonalization filtering with applications in elastic modelling and inversion jeong, woodon and tsingas, constantinos and kim, young seo journal of applied geophysics   2019 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Enhanced elastic wavefield separation using local orthogonalization filtering with applications in elastic modelling and inversion</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Young Seo Kim</p>
+  <p class="pub-venue"><em>Journal of Applied Geophysics</em>, 160, 131–143</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2019" data-search="least-squares reverse time migration using analytic-signal-based wavefield decomposition kim, young seo and almomin, ali and jeong, woodon and tsingas, constantine geophysics   2019 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Least-squares reverse time migration using analytic-signal-based wavefield decomposition</h3>
+  <p class="pub-authors">Young Seo Kim, Ali Almomin, <strong>Woodon Jeong</strong>, Constantine Tsingas</p>
+  <p class="pub-venue"><em>Geophysics</em>, 84(3), S149–S157</p>
+</article>
+
+
+<article class="publication-card" data-category="patent" data-year="2019" data-search="applying orthogonalization filtering to wavefield separation jeong, woodon and tsingas, constantinos and kim, young seo   us patent app. 15/810,779 2019 patent">
+  <div class="publication-topline">
+    <span class="pub-type patent">Patent</span>
+  </div>
+  <h3>Applying orthogonalization filtering to wavefield separation</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Young Seo Kim</p>
+  <p class="pub-venue">US Patent App. 15/810,779</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2018"><h2 class="pub-year">2018</h2>
+
+<article class="publication-card" data-category="conference" data-year="2018" data-search="a new imaging condition for least-squares reverse time migration with local similarity seo kim, young and almomin, ali and jeong, woodon and tsingas, constantine  seg international exposition and annual meeting  2018 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>A new imaging condition for least-squares reverse time migration with local similarity</h3>
+  <p class="pub-authors">Young Seo Kim, Ali Almomin, <strong>Woodon Jeong</strong>, Constantine Tsingas</p>
+  <p class="pub-venue"><em>SEG International Exposition and Annual Meeting</em>, SEG–2018</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2018" data-search="directional-oriented wavefield imaging: a new wave-based subsurface illumination imaging condition for reverse time migration kim, young seo and tsingas, constantine and jeong, woodon geophysical prospecting   2018 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Directional-oriented wavefield imaging: a new wave-based subsurface illumination imaging condition for reverse time migration</h3>
+  <p class="pub-authors">Young Seo Kim, Constantine Tsingas, <strong>Woodon Jeong</strong></p>
+  <p class="pub-venue"><em>Geophysical Prospecting</em>, 66(6), 1097–1110</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2018" data-search="full waveform inversion with angle-dependent gradient preconditioning using wavefield decomposition jeong, woodon and tsingas, constantinos and kim, young seo journal of applied geophysics   2018 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Full waveform inversion with angle-dependent gradient preconditioning using wavefield decomposition</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Constantinos Tsingas, Young Seo Kim</p>
+  <p class="pub-venue"><em>Journal of Applied Geophysics</em>, 159, 23–31</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2017"><h2 class="pub-year">2017</h2>
+
+<article class="publication-card" data-category="conference" data-year="2017" data-search="3d least-squares reverse time migration using wavefield decomposition via hilbert transform kim, ys and jeong, w and tsingas, c  79th eage conference and exhibition 2017  2017 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>3D Least-Squares Reverse Time Migration Using Wavefield Decomposition via Hilbert transform</h3>
+  <p class="pub-authors">YS Kim, <strong>W Jeong</strong>, C Tsingas</p>
+  <p class="pub-venue"><em>79th EAGE Conference and Exhibition 2017</em>, 2017(1), 1–5</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2017" data-search="full waveform inversion with optical flow jeong, wd and kim, y and tsingas, c  79th eage conference and exhibition 2017  2017 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Full Waveform Inversion with Optical Flow</h3>
+  <p class="pub-authors"><strong>WD Jeong</strong>, Y Kim, C Tsingas</p>
+  <p class="pub-venue"><em>79th EAGE Conference and Exhibition 2017</em>, 2017(1), 1–5</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2015"><h2 class="pub-year">2015</h2>
+
+<article class="publication-card" data-category="journal" data-year="2015" data-search="full waveform inversion using student’s t-distribution: a numerical study for elastic waveform inversion and simultaneous-source method jeong, woodon and kang, minji and kim, shinwoong and min, dong-joo and kim, won-ki pure and applied geophysics   2015 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Full waveform inversion using Student’s t-distribution: A numerical study for elastic waveform inversion and simultaneous-source method</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Minji Kang, Shinwoong Kim, Dong-Joo Min, Won-Ki Kim</p>
+  <p class="pub-venue"><em>Pure and Applied Geophysics</em>, 172(6), 1491–1509</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2014"><h2 class="pub-year">2014</h2>
+
+<article class="publication-card" data-category="conference" data-year="2014" data-search="2-d acoustic vti full waveform inversion for ccs monitoring shinwoong, kim and kim, won-ki and min, dong-joo and jeong, woodon and oh, ju-won  2014 agu fall meeting  2014 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>2-D acoustic VTI full waveform inversion for CCS monitoring</h3>
+  <p class="pub-authors">KIM Shinwoong, Won-Ki Kim, Dong-Joo Min, <strong>Woodon Jeong</strong>, Ju-won Oh</p>
+  <p class="pub-venue"><em>2014 AGU Fall Meeting</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2014" data-search="comparison of misfit functions for phase-only inversion in the frequency domain jeong, gangwon and jeong, woodon and min, dong-joo  agu fall meeting abstracts  2014 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Comparison of misfit functions for phase-only inversion in the frequency domain</h3>
+  <p class="pub-authors">Gangwon Jeong, <strong>Woodon Jeong</strong>, Dong-Joo Min</p>
+  <p class="pub-venue"><em>AGU Fall Meeting Abstracts</em>, 2014, S43B–4563</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2013"><h2 class="pub-year">2013</h2>
+
+<article class="publication-card" data-category="conference" data-year="2013" data-search="a new strategy for 2d vti seismic full waveform inversion kim, won-ki and jeong, woodon and min, dong-joo aseg extended abstracts   2013 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>A new strategy for 2D VTI seismic full waveform inversion</h3>
+  <p class="pub-authors">Won-Ki Kim, <strong>Woodon Jeong</strong>, Dong-Joo Min</p>
+  <p class="pub-venue"><em>ASEG Extended Abstracts</em>, 2013(1), 1–4</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2013" data-search="comparison of acoustic wave modelling algorithms for homogeneous and heterogeneous media kim, sinwoong and jeong, woodon and min, dong-joo  75th eage conference &amp; exhibition incorporating spe europec 2013  2013 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Comparison of Acoustic Wave Modelling Algorithms for Homogeneous and Heterogeneous Media</h3>
+  <p class="pub-authors">Sinwoong Kim, <strong>Woodon Jeong</strong>, Dong-Joo Min</p>
+  <p class="pub-venue"><em>75th EAGE Conference &amp; Exhibition incorporating SPE EUROPEC 2013</em></p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2013" data-search="crosstalk reduction in l1-norm-based simultaneous-source full waveform inversion jeong, w and pyun, s and min, dj  75th eage conference &amp; exhibition incorporating spe europec 2013  2013 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Crosstalk Reduction in L1-norm-based simultaneous-source full waveform inversion</h3>
+  <p class="pub-authors"><strong>W Jeong</strong>, S Pyun, DJ Min</p>
+  <p class="pub-venue"><em>75th EAGE Conference &amp; Exhibition incorporating SPE EUROPEC 2013</em>, cp–348</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2013" data-search="a numerical study of simultaneous-source full waveform inversion with l1-norm jeong, woodon and pyun, sukjoon and son, woohyun and min, dong-joo geophysical journal international   2013 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>A numerical study of simultaneous-source full waveform inversion with L1-norm</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Sukjoon Pyun, Woohyun Son, Dong-Joo Min</p>
+  <p class="pub-venue"><em>Geophysical Journal International</em>, 194(3), 1727–1737</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2012"><h2 class="pub-year">2012</h2>
+
+<article class="publication-card" data-category="conference" data-year="2012" data-search="application of acoustic full waveform inversion for density estimation jeong, woodon and min, dong-joo  seg international exposition and annual meeting  2012 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Application of acoustic full waveform inversion for density estimation</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Dong-Joo Min</p>
+  <p class="pub-venue"><em>SEG International Exposition and Annual Meeting</em>, SEG–2012</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2012" data-search="simultaneous source full waveform inversion using robust objective function son, woohyun and jeong, woodon and min, dong-joo and pyun, sukjoon  seg international exposition and annual meeting  2012 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Simultaneous source full waveform inversion using robust objective function</h3>
+  <p class="pub-authors">Woohyun Son, <strong>Woodon Jeong</strong>, Dong-Joo Min, Sukjoon Pyun</p>
+  <p class="pub-venue"><em>SEG International Exposition and Annual Meeting</em>, SEG–2012</p>
+</article>
+
+
+<article class="publication-card" data-category="journal" data-year="2012" data-search="full waveform inversion strategy for density in the frequency domain jeong, woodon and lee, ho-yong and min, dong-joo geophysical journal international   2012 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>Full waveform inversion strategy for density in the frequency domain</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Ho-Yong Lee, Dong-Joo Min</p>
+  <p class="pub-venue"><em>Geophysical Journal International</em>, 188(3), 1221–1242</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2011"><h2 class="pub-year">2011</h2>
+
+<article class="publication-card" data-category="conference" data-year="2011" data-search="2d frequency-domain elastic full waveform inversion using finite-element method for vti media jeong, woodon and min, dong-joo and lee, gyu-hwa and lee, ho-yong  seg technical program expanded abstracts  2011 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>2D frequency-domain elastic full waveform inversion using finite-element method for VTI media</h3>
+  <p class="pub-authors"><strong>Woodon Jeong</strong>, Dong-Joo Min, Gyu-hwa Lee, Ho-Yong Lee</p>
+  <p class="pub-venue"><em>SEG Technical Program Expanded Abstracts</em>, 30(1), 2654–2658</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2011" data-search="frequency-domain elastic full waveform inversion using encoded simultaneous sources jeong, w and son, w and pyun, s and min, d  agu fall meeting abstracts  2011 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Frequency-domain elastic full waveform inversion using encoded simultaneous sources</h3>
+  <p class="pub-authors"><strong>W Jeong</strong>, W Son, S Pyun, D Min</p>
+  <p class="pub-venue"><em>AGU Fall Meeting Abstracts</em>, 2011, NS43A–1504</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2011" data-search="frequency-domain elastic full waveform inversion using simultaneous sources jeong, woo-don and son, woo-hyun and pyun, suk-joon and min, dong-joo 한국지구물리탐사학회: 학술대회논문집   2011 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Frequency-domain elastic full waveform inversion using simultaneous sources</h3>
+  <p class="pub-authors"><strong>Woo-Don Jeong</strong>, Woo-Hyun Son, Suk-Joon Pyun, Dong-Joo Min</p>
+  <p class="pub-venue"><em>한국지구물리탐사학회: 학술대회논문집</em>, 41–44</p>
+</article>
+
+
+<article class="publication-card" data-category="conference" data-year="2011" data-search="simultaneous source waveform inversion applying a robust objective function against outliers son, woo-hyun and pyun, suk-joon and jeong, woo-don and min, dong-joo 한국지구물리탐사학회: 학술대회논문집   2011 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Simultaneous Source Waveform Inversion Applying a Robust Objective Function against Outliers</h3>
+  <p class="pub-authors">Woo-Hyun Son, Suk-Joon Pyun, <strong>Woo-Don Jeong</strong>, Dong-Joo Min</p>
+  <p class="pub-venue"><em>한국지구물리탐사학회: 학술대회논문집</em>, 37–40</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2010"><h2 class="pub-year">2010</h2>
+
+<article class="publication-card" data-category="conference" data-year="2010" data-search="frequency-domain elastic full waveform inversion for vti media jeong, wd and koo, jm and lee, hy and min, dj and yoo, hs  72nd eage conference and exhibition incorporating spe europec 2010  2010 conference paper">
+  <div class="publication-topline">
+    <span class="pub-type conference">Conference Paper</span>
+  </div>
+  <h3>Frequency-domain Elastic Full Waveform Inversion for VTI Media</h3>
+  <p class="pub-authors"><strong>WD Jeong</strong>, JM Koo, HY Lee, DJ Min, HS Yoo</p>
+  <p class="pub-venue"><em>72nd EAGE Conference and Exhibition incorporating SPE EUROPEC 2010</em>, cp–161</p>
+</article>
+
+</div>
+<div class="pub-year-group" data-year-group="2009"><h2 class="pub-year">2009</h2>
+
+<article class="publication-card" data-category="journal" data-year="2009" data-search="3-d inversion of 3-d synthetic dc resistivity data for vein-type ore deposits lee, ho-yong and jung, hyun-key and jeong, woo-don and kwak, na-eun and lee, hyo-sun and min, dong-joo journal of the korean earth science society   2009 journal article">
+  <div class="publication-topline">
+    <span class="pub-type journal">Journal Article</span>
+  </div>
+  <h3>3-D inversion of 3-D synthetic DC resistivity data for vein-type ore deposits</h3>
+  <p class="pub-authors">Ho-Yong Lee, Hyun-Key Jung, <strong>Woo-Don Jeong</strong>, Na-Eun Kwak, Hyo-Sun Lee, Dong-Joo Min</p>
+  <p class="pub-venue"><em>Journal of the Korean earth science society</em>, 30(6), 699–708</p>
+</article>
+
+</div>
       </div>
-      <div class="pub-item">
-        <h3>Add another representative publication</h3>
-        <p>Authors. Journal, volume, pages, year.</p>
-        <span class="tag">Journal Article</span>
-      </div>
-      <div class="pub-item">
-        <h3>Full publication list</h3>
-        <p>Add a Google Scholar, ORCID, or downloadable CV link here.</p>
-      </div>
+      <div class="no-results" id="no-results">No publications match the selected filter.</div>
     </div>
   </section>
 </main>
-
 
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -70,5 +875,45 @@
   </div>
 </footer>
 
+<script>
+  const buttons = document.querySelectorAll(".filter-button");
+  const cards = document.querySelectorAll(".publication-card");
+  const groups = document.querySelectorAll(".pub-year-group");
+  const search = document.getElementById("publication-search");
+  const noResults = document.getElementById("no-results");
+  let activeFilter = "all";
+
+  function applyFilters() {
+    const query = search.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const categoryMatch = activeFilter === "all" || card.dataset.category === activeFilter;
+      const searchMatch = !query || card.dataset.search.includes(query);
+      const visible = categoryMatch && searchMatch;
+      card.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+
+    groups.forEach(group => {
+      const hasVisibleCard = [...group.querySelectorAll(".publication-card")]
+        .some(card => !card.hidden);
+      group.hidden = !hasVisibleCard;
+    });
+
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      buttons.forEach(item => item.classList.remove("active"));
+      button.classList.add("active");
+      activeFilter = button.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  search.addEventListener("input", applyFilters);
+</script>
 </body>
 </html>
