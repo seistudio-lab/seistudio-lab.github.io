@@ -1,0 +1,411 @@
+/* CV-based website update
+   This file supplements the existing styles.css without replacing it. */
+
+.nav-links {
+  gap: 18px;
+  white-space: nowrap;
+}
+
+.nav-links a {
+  font-size: 14px;
+}
+
+.section-kicker {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 860px;
+  font-size: 19px;
+  color: var(--muted);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 16px;
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button-link:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.button-link.secondary {
+  border-color: #aeb8c7;
+  color: var(--text);
+}
+
+.button-link.secondary:hover {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+}
+
+.research-grid-five {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.research-grid-five .card {
+  padding: 24px;
+}
+
+.research-grid-five .card h3 {
+  font-size: 18px;
+}
+
+.feature-strip {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 54px;
+  align-items: start;
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 26px;
+}
+
+.fact {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+}
+
+.fact strong {
+  display: block;
+  color: var(--blue);
+  font-size: 25px;
+  line-height: 1.15;
+}
+
+.fact span {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.profile-wide {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 42px;
+  align-items: start;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--white);
+}
+
+.profile-photo-tall {
+  min-height: 285px;
+  aspect-ratio: 4 / 5;
+  border: 1px dashed #aeb8c7;
+  border-radius: 14px;
+  background: var(--light);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.profile-title {
+  margin: 0 0 4px;
+  font-size: clamp(30px, 4vw, 44px);
+  letter-spacing: -0.03em;
+}
+
+.profile-role {
+  margin: 0 0 22px;
+  color: var(--blue);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.profile-summary {
+  max-width: 850px;
+  color: #465165;
+  font-size: 17px;
+}
+
+.profile-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.info-panel {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.info-panel h2,
+.info-panel h3 {
+  margin-top: 0;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 25px 25px;
+  border-left: 2px solid #d9e0eb;
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 4px #edf1ff;
+}
+
+.timeline .time {
+  display: block;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.timeline strong {
+  display: block;
+  margin: 2px 0;
+}
+
+.timeline .detail {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.compact-list {
+  margin: 0;
+  padding-left: 19px;
+}
+
+.compact-list li {
+  margin: 9px 0;
+  color: #465165;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-section {
+  margin-bottom: 72px;
+}
+
+.project-list {
+  display: grid;
+  gap: 18px;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 28px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.project-meta {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.project-card h3 {
+  margin: 0 0 10px;
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.project-card p {
+  margin: 5px 0;
+  color: var(--muted);
+}
+
+.project-role {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #e9eeff;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.research-detail {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 22px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.research-detail:first-child {
+  padding-top: 0;
+}
+
+.research-index {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e9eeff;
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.research-detail h2 {
+  margin: 0 0 10px;
+  font-size: 27px;
+}
+
+.research-detail p {
+  color: var(--muted);
+}
+
+.topic-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.topic-tag {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--light);
+  border: 1px solid var(--line);
+  color: #4b5668;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.home-publications {
+  display: grid;
+  gap: 0;
+}
+
+.home-publication {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-publication:first-child {
+  padding-top: 0;
+}
+
+.home-publication h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+}
+
+.home-publication p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.contact-details a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+@media (max-width: 1120px) {
+  .research-grid-five {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 16px;
+  }
+
+  .research-grid-five,
+  .student-grid,
+  .fact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature-strip,
+  .profile-wide,
+  .profile-section-grid,
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 620px) {
+  .research-grid-five,
+  .student-grid,
+  .fact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .research-detail {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .profile-wide,
+  .info-panel,
+  .project-card {
+    padding: 23px;
+  }
+}
