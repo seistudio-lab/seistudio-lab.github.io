@@ -409,3 +409,20 @@
     padding: 23px;
   }
 }
+
+.profile-photo-tall {
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+}
+
+.profile-photo-tall img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 285px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 14px;
+}
