@@ -189,6 +189,70 @@
       font-size: 17px;
     }
 
+.ongoing-manuscripts {
+  margin-bottom: 58px;
+}
+
+.ongoing-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.ongoing-card {
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.ongoing-card h3 {
+  max-width: 980px;
+  margin: 10px 0 8px;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.ongoing-card p {
+  margin: 4px 0;
+}
+
+.ongoing-topline {
+  display: flex;
+  align-items: center;
+}
+
+.manuscript-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.manuscript-status.preparation {
+  background: #f2f3f5;
+  color: #555f6d;
+}
+
+.manuscript-status.review {
+  background: #fff1df;
+  color: #845112;
+}
+
+.manuscript-status.revision {
+  background: #e9eeff;
+  color: var(--blue);
+}
+
+.manuscript-status.revised {
+  background: #edf4ef;
+  color: #27633c;
+}
+    
     @media (max-width: 760px) {
       .publication-summary {
         grid-template-columns: repeat(2, 1fr);
@@ -239,6 +303,57 @@
 
   <section class="section">
     <div class="container">
+    <!-- Ongoing Manuscripts -->
+    <section class="ongoing-manuscripts">
+      <div class="section-heading">
+        <p class="section-kicker">Ongoing research</p>
+        <h2>Ongoing Manuscripts</h2>
+        <p>
+          Manuscripts currently in preparation, under review, or in revision.
+        </p>
+      </div>
+
+      <div class="ongoing-list">
+
+        <article class="ongoing-card">
+          <div class="ongoing-topline">
+            <span class="manuscript-status revision">In Revision</span>
+          </div>
+          <h3>
+            Paper title goes here
+          </h3>
+          <p class="pub-authors">
+            First Author, <strong>Woodon Jeong</strong>
+          </p>
+        </article>
+
+        <article class="ongoing-card">
+          <div class="ongoing-topline">
+            <span class="manuscript-status review">Under Review</span>
+          </div>
+          <h3>
+            Second paper title goes here
+          </h3>
+          <p class="pub-authors">
+            First Author, <strong>Woodon Jeong</strong>, Third Author
+          </p>
+        </article>
+
+        <article class="ongoing-card">
+          <div class="ongoing-topline">
+            <span class="manuscript-status preparation">In Preparation</span>
+          </div>
+          <h3>
+            Third paper title goes here
+          </h3>
+          <p class="pub-authors">
+            First Author, <strong>Woodon Jeong</strong>
+          </p>
+        </article>
+
+      </div>
+    </section>
+      
       <div class="publication-toolbar">
         <div class="publication-summary">
           <div class="publication-stat"><strong>58</strong><span>Total records</span></div>
